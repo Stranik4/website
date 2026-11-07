@@ -1,0 +1,336 @@
+  .profile-container {
+    background-color: #fff;
+    padding: 20px;
+    max-width: 400px;
+    width: 90%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    text-align: center;
+    color: #333;
+  }
+
+  .info {
+    margin-bottom: 15px;
+  }
+
+  .label {
+    font-weight: bold;
+    display: inline-block;
+    width: 70px;
+  }
+
+  .value {
+    color: #555;
+  }
+
+  .ticket {
+    background-color: #eef;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .delete-btn {
+    background-color: #e33;
+    border: none;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .delete-btn:hover {
+    background-color: #c00;
+  }
+
+/* Обертка для двухколоночного макета */
+.profile-wrapper {
+    display: flex;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Общие стили для колонок */
+.profile-column {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+}
+
+/* Контейнер профиля (левая колонка) */
+.profile-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+}
+
+/* Контейнер истории (правая колонка) */
+.history-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+}
+
+/* Бейдж администратора */
+.admin-badge {
+    background-color: #4a6bff;
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+    border-radius: 4px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.admin-label {
+    color: #fcfcfc;
+    font-weight: bold;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+}
+
+/* Заголовок истории с кнопкой очистки */
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.history-header h2 {
+    margin: 0;
+}
+
+.clear-history-form {
+    margin: 0;
+}
+
+h2 {
+    margin-top: 0;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #444;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.info {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.label {
+    font-weight: bold;
+    display: inline-block;
+    width: 70px;
+    color: #333;
+}
+
+.value {
+    color: #555;
+}
+
+/* Стили для карточек записей */
+.booking-card {
+    background-color: #f9f9ff;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border-left: 4px solid #4a6bff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.history-card {
+    background-color: #f8f8f8;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border-left: 4px solid #888;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.booking-card h4,
+.history-card h4 {
+    margin-top: 0;
+    color: #333;
+}
+
+.booking-card p,
+.history-card p {
+    margin: 8px 0;
+    color: #555;
+}
+
+/* Кнопка отмены */
+.cancel-btn {
+    display: inline-block;
+    background-color: #ff4444;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-top: 10px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.cancel-btn:hover {
+    background-color: #cc0000;
+}
+
+/* Кнопка очистки истории */
+.clear-history-btn {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.clear-history-btn:hover {
+    background-color: #ff4444;
+}
+
+/* Кнопка удаления из истории */
+.delete-history-btn {
+    display: inline-block;
+    background-color: #999;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.delete-history-btn:hover {
+    background-color: #777;
+}
+
+.history-actions {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #ddd;
+    text-align: center;
+}
+
+/* Блок с кнопками действий */
+.profile-actions {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Кнопка админ-панели */
+.admin-panel-btn {
+    display: block;
+    background-color: #4a6bff;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.admin-panel-btn:hover {
+    background-color: #3a5bef;
+}
+
+/* Кнопка выхода */
+.logout-btn {
+    display: block;
+    background-color: #666;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.logout-btn:hover {
+    background-color: #444;
+}
+
+/* Для администратора - одиночная колонка */
+.profile-wrapper.admin-view {
+    max-width: 600px;
+}
+
+.profile-wrapper.admin-view .profile-column {
+    max-width: 100%;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .profile-wrapper {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .profile-column {
+        max-width: 100%;
+    }
+    
+    .history-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .clear-history-form {
+        align-self: flex-end;
+    }
+    
+    .info {
+        flex-direction: column;
+    }
+    
+    .profile-actions {
+        gap: 8px;
+    }
+    
+    .admin-panel-btn,
+    .logout-btn {
+        padding: 10px;
+        font-size: 1em;
+    }
+}

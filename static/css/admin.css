@@ -1,0 +1,486 @@
+/* Основной контейнер */
+.admin-container {
+    max-width: 1400px; /* Увеличил ширину для таблицы */
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирование содержимого */
+}
+
+/* Заголовки */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2em;
+    width: 100%;
+}
+
+/* Центрирование контейнера со статистикой */
+.admin-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.stat-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 280px;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.stat-card h3 {
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.stat-number {
+    font-size: 3em;
+    font-weight: bold;
+    color: #007bff;
+    margin: 15px 0;
+}
+
+.stat-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: #666;
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.stat-link:hover {
+    color: #007bff;
+    border-color: #007bff;
+    background: #f8f9fa;
+}
+
+/* Действия админ-панели */
+.admin-actions {
+    margin-bottom: 30px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Таблицы - ОБНОВЛЕНО: центрирование */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-table th {
+    background: #f8f9fa;
+    font-weight: bold;
+    color: #333;
+    text-align: center; /* Центрирование заголовков */
+}
+
+.admin-table td {
+    text-align: center; /* Центрирование содержимого ячеек */
+}
+
+.admin-table tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Особые колонки (где нужно выравнивание по левому краю) */
+.admin-table td:nth-child(3), /* Услуга */
+.admin-table td:nth-child(4) { /* Клиент */
+    text-align: left;
+}
+
+.actions {
+    white-space: nowrap;
+}
+
+.actions a {
+    margin: 0 5px;
+}
+
+.status-form {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.status-form select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    font-size: 14px;
+    text-align: center;
+    min-width: 150px;
+}
+
+/* Форма админ-панели */
+.admin-form {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.form-group input::placeholder {
+    color: #999;
+    font-size: 14px;
+}
+
+/* Кнопки */
+.btn-primary, .btn-secondary, .btn-edit, .btn-delete, .btn-small {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.btn-primary {
+    background: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #545b62;
+    transform: translateY(-2px);
+}
+
+.btn-edit {
+    background: #28a745;
+    color: white;
+}
+
+.btn-edit:hover {
+    background: #1e7e34;
+}
+
+.btn-delete {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #bd2130;
+}
+
+.btn-small {
+    background: #17a2b8;
+    color: white;
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+/* Статусы */
+.status-запланировано { 
+    color: #ffc107; 
+    font-weight: bold;
+}
+.status-подтверждено { 
+    color: #17a2b8; 
+    font-weight: bold;
+}
+.status-выполнено { 
+    color: #28a745; 
+    font-weight: bold;
+}
+.status-отменено { 
+    color: #dc3545; 
+    font-weight: bold;
+}
+
+/* Таблица записей */
+.bookings-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.bookings-table th,
+.bookings-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.bookings-table th {
+    background: #f8f9fa;
+    font-weight: bold;
+    color: #333;
+}
+
+.bookings-table tr:hover {
+    background-color: #f8f9fa;
+}
+
+.recent-bookings {
+    margin-top: 40px;
+    width: 100%;
+}
+
+.recent-bookings h2 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Таблица в recent-bookings тоже центрируем */
+.recent-bookings .bookings-table th,
+.recent-bookings .bookings-table td {
+    text-align: center;
+}
+
+.recent-bookings .bookings-table td:nth-child(1), /* Клиент */
+.recent-bookings .bookings-table td:nth-child(2) { /* Услуга */
+    text-align: left;
+}
+
+/* Заголовки */
+h2 {
+    color: #444;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    text-align: center;
+    width: 100%;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .admin-container {
+        padding: 15px;
+        max-width: 100%;
+    }
+    
+    .admin-stats {
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .stat-card {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .admin-form {
+        padding: 20px;
+    }
+    
+    .form-group input,
+    .form-group select {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .admin-table th,
+    .admin-table td {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .btn-primary, .btn-secondary {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    
+    /* Адаптивная таблица для мобильных */
+    .admin-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-container {
+        padding: 10px;
+    }
+    
+    .admin-form {
+        padding: 15px;
+    }
+    
+    .admin-table {
+        font-size: 12px;
+    }
+    
+    .admin-table th,
+    .admin-table td {
+        padding: 8px;
+    }
+}
+/* Рейтинг популярных услуг */
+.popular-services {
+    margin: 40px 0;
+    width: 100%;
+}
+
+.popular-services h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.popular-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.popular-table th {
+    background: #f8f9fa;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.popular-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.popular-table tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Стили для топ-услуги */
+.top-service {
+    background-color: #fff9e6 !important;
+    border-left: 4px solid #ffc107;
+}
+
+.top-service .rank {
+    color: #ff9800;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.rank {
+    font-weight: bold;
+    color: #666;
+    width: 60px;
+}
+
+.service-name {
+    text-align: left !important;
+    font-weight: 500;
+}
+
+.booking-count {
+    font-weight: bold;
+    color: #007bff;
+    min-width: 100px;
+}
+
+.category {
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* Адаптивность для популярных услуг */
+@media (max-width: 768px) {
+    .popular-table {
+        font-size: 14px;
+    }
+    
+    .popular-table th,
+    .popular-table td {
+        padding: 10px 8px;
+    }
+    
+    .service-name {
+        max-width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}

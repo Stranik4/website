@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{%block content%}
+{%endblock %}	
+{%block login%}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRAK</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/registr.css')}}">
+</head>
+ <!-- Блок регистрации -->
+  <div class="container">
+  <div class="form-box" id="register-form">
+    <h2>РЕГИСТРАЦИЯ</h2>
+    <form action="{{url_for('registr')}}" method="post">
+      <label for="reg-email">Email *</label>
+      <input type="text" id="reg-email" name="email" placeholder="Email" required />
+
+      <label for="reg-login">Логин *</label>
+      <input type="text" id="reg-login" name="login" placeholder="Логин" required />
+
+      <label for="reg-password">Пароль *</label>
+      <input type="password" id="reg-password" name="password" placeholder="Пароль" required />
+
+      <label for="reg-name">Имя</label>
+      <input type="text" id="reg-name" name="name" placeholder="Имя" required />
+
+      <label for="reg-surname">Фамилия</label>
+      <input type="text" id="reg-surname" name="second_name" placeholder="Фамилия" required />
+
+      <label for="reg-phone">Телефон</label>
+      <input type="text" id="reg-phone" name="tel" placeholder="Телефон" required/>
+
+      <div class="buttons">
+        {% for cat, msg in get_flashed_messages(True) %}
+        <div class="flash {{cat}}">{{msg}}</div>
+        {% endfor %}
+        <button type="submit" class="btn-submit">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+      </div>
+    </form>
+  </div>
+  </div>
+{%endblock%}  
+      

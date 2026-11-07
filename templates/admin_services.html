@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление услугами - MRAK</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+
+<div class="admin-container">
+    <h1>Управление услугами</h1>
+    
+    <div class="admin-actions">
+        <a href="{{ url_for('admin_add_service') }}" class="btn-primary">Добавить услугу</a>
+        <a href="{{ url_for('admin_panel') }}" class="btn-secondary">Назад в админ-панель</a>
+    </div>
+
+    {% if services %}
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Название услуги</th>
+                <th>Цена</th>
+                <th>Время</th>
+                <th>Категория</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for service in services %}
+            <tr>
+                <td>{{ service.id }}</td>
+                <td>{{ service.title_service }}</td>
+                <td>{{ service.price }} ₽</td>
+                <td>{{ service.time }}</td>
+                <td>{{ service.category }}</td>
+                <td class="actions">
+                    <a href="{{ url_for('admin_edit_service', service_id=service.id) }}" class="btn-edit">Редактировать</a>
+                    <a href="{{ url_for('admin_delete_service', service_id=service.id) }}" 
+                       class="btn-delete" 
+                       onclick="return confirm('Вы уверены, что хотите удалить эту услугу?')">Удалить</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Нет услуг</p>
+    {% endif %}
+</div>
+{% endblock %}

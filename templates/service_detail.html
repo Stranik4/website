@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дата и время</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/service_detail.css')}}">
+</head>
+
+<div class="service-detail-container">
+    <div class="header-section">
+        <h1>Дата и время</h1>
+    </div>
+
+    <div class="service-info-card">
+        <h2>МRАК:</h2>
+        <div class="service-details">
+            <h3>{{ service.title_service }}</h3>
+            <p class="price-duration">от {{ service.price }} ₽, {{ service.time }}</p>
+            <p class="duration-info">Продолжительность услуги: {{ service.time }}</p>
+        </div>
+    </div>
+
+    <div class="calendar-section">
+        <div class="calendar-header">
+            <a href="{{ url_for('service_detail', service_id=service.id, selected_date=selected_date, month=prev_month, year=prev_year) }}" 
+               class="nav-arrow">&larr;</a>
+            <h3>{{ calendar_data.month_name }} {{ calendar_data.year }}</h3>
+            <a href="{{ url_for('service_detail', service_id=service.id, selected_date=selected_date, month=next_month, year=next_year) }}" 
+               class="nav-arrow">&rarr;</a>
+        </div>
+        
+        <table class="calendar-table">
+            <thead>
+                <tr>
+                    {% for day_name in calendar_data.day_names %}
+                    <th>{{ day_name }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for week in calendar_data.days %}
+                <tr>
+                    {% for day in week %}
+                    <td>
+                        {% if day %}
+                            {% set date_str = calendar_data.year ~ '-' ~ '%02d' % calendar_data.month ~ '-' ~ '%02d' % day %}
+                            <a href="{{ url_for('service_detail', service_id=service.id, selected_date=date_str, month=calendar_data.month, year=calendar_data.year) }}" 
+                               class="day-link {% if selected_date == date_str %}selected{% endif %}">
+                                {{ day }}
+                            </a>
+                        {% endif %}
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% if selected_date and formatted_date %}
+    <div class="time-selection-section">
+        <h3 class="selected-date">{{ formatted_date }}</h3>
+        
+        <form action="{{ url_for('service_detail', service_id=service.id, month=calendar_data.month, year=calendar_data.year) }}" method="post" class="booking-form">
+            <input type="hidden" name="booking_date" value="{{ selected_date }}">
+            
+            <div class="time-info">
+                <p><strong>Продолжительность услуги:</strong> {{ service.time }}</p>
+                <p><strong>Доступные времена:</strong></p>
+            </div>
+            
+            <div class="time-slots">
+                {% for time in available_times %}
+                <div class="time-slot">
+                    {% if time in booked_times %}
+                    <input type="radio" name="booking_time" value="{{ time }}" id="time_{{ loop.index }}" disabled>
+                    <label for="time_{{ loop.index }}" class="time-slot-label time-slot-disabled" title="Время занято">
+                        {{ time }}
+                    </label>
+                    {% else %}
+                    <input type="radio" name="booking_time" value="{{ time }}" id="time_{{ loop.index }}" required>
+                    <label for="time_{{ loop.index }}" class="time-slot-label">
+                        {{ time }}
+                    </label>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            
+            {% if available_times|length == 0 %}
+            <div class="all-booked-message">
+                <p>На эту дату нет доступных времен. Пожалуйста, выберите другую дату.</p>
+            </div>
+            {% endif %}
+            
+            <div class="booking-button-container">
+                <button type="submit" class="booking-btn" {% if available_times|length == 0 %}disabled{% endif %}>
+                    Записаться
+                </button>
+            </div>
+        </form>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{%block content%}
+<div class="popular-destinations">
+    <h2>Услуги</h2>
+    <!-- Контейнер для карточек услуг -->
+    <div class="destinations-container">
+        {% for service in services %}
+            <div class="destination-card">
+                <div class="destination-info">
+                    <a href="{{ url_for('service_detail', service_id=service.id)}}">{{ service.title_service }}</a>
+                    <p class="price">{{ service.price }} ₽</p>
+                    <p class="duration">{{ service.time}}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>   
+</div>
+{%endblock%}

@@ -1,0 +1,102 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль пользователя</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/prifiluserpro.css') }}">
+</head>
+
+<div class="profile-wrapper">
+    <!-- Левая колонка: информация о пользователе -->
+    <div class="profile-column left-column">
+        <div class="profile-container">
+            <h2>Профиль пользователя</h2>
+            
+            {% if is_admin %}
+                <div class="admin-badge">
+                    <span class="admin-label">АДМИНИСТРАТОР</span>
+                </div>
+            {% endif %}
+            
+            <div class="info">
+                <span class="label">Имя:</span>
+                <span class="value" id="username">{{ user_info[0] }}</span>
+            </div>
+            <div class="info">
+                <span class="label">Email:</span>
+                <span class="value" id="email">{{ user_info[1] }}</span>
+            </div>
+            
+            <!-- Для обычных пользователей показываем записи -->
+            {% if not is_admin %}
+                <h3>Мои записи на услуги</h3>
+                {% if bookings %}
+                    {% for booking, service in bookings %}
+                        {% if booking and service %}
+                        <div class="booking-card">
+                            <h4>{{ service.title_service }}</h4>
+                            <p><strong>Цена:</strong> {{ service.price }} ₽</p>
+                            <p><strong>Время выполнения:</strong> {{ service.time }}</p>
+                            <p><strong>Дата записи:</strong> {{ booking.booking_date }}</p>
+                            <p><strong>Время записи:</strong> {{ booking.booking_time }}</p>
+                            <p><strong>Статус:</strong> {{ booking.status }}</p>
+                            <p><strong>Запись создана:</strong> {{ booking.created_at }}</p>
+                            <a href="{{ url_for('cancel_booking', booking_id=booking.id) }}" class="cancel-btn">Отменить запись</a>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <p>У вас пока нет записей на услуги.</p>
+                {% endif %}
+            {% endif %}
+            
+            <div class="profile-actions">
+                {% if is_admin %}
+                    <a href="{{ url_for('admin_panel') }}" class="admin-panel-btn">Админ-панель</a>
+                {% endif %}
+                <a href="{{ url_for('logout') }}" class="logout-btn">Выйти</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Правая колонка: история записей (только для обычных пользователей) -->
+    {% if not is_admin %}
+    <div class="profile-column right-column">
+        <div class="history-container">
+            <div class="history-header">
+                <h2>История записей</h2>
+                {% if history_bookings %}
+                <form action="{{ url_for('clear_history') }}" method="POST" class="clear-history-form">
+                    <button type="submit" class="clear-history-btn" onclick="return confirm('Вы уверены, что хотите очистить всю историю?')">
+                        Очистить историю
+                    </button>
+                </form>
+                {% endif %}
+            </div>
+            
+            {% if history_bookings %}
+                {% for booking, service in history_bookings %}
+                    {% if booking and service %}
+                    <div class="history-card">
+                        <h4>{{ service.title_service }}</h4>
+                        <p><strong>Цена:</strong> {{ service.price }} ₽</p>
+                        <p><strong>Дата записи:</strong> {{ booking.booking_date }}</p>
+                        <p><strong>Время записи:</strong> {{ booking.booking_time }}</p>
+                        <p><strong>Статус:</strong> {{ booking.status }}</p>
+                        <p><strong>Запись создана:</strong> {{ booking.created_at }}</p>
+                        <div class="history-actions">
+                            <a href="{{ url_for('delete_from_history', booking_id=booking.id) }}" 
+                               class="delete-history-btn"
+                               onclick="return confirm('Удалить эту запись из истории?')">
+                                Удалить из истории
+                            </a>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <p>История записей пуста.</p>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div>

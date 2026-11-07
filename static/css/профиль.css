@@ -1,0 +1,60 @@
+.flash.error {color: red;}
+	
+    .container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 50px;
+  }
+  .form-box {
+    background: #fff;
+    padding: 20px;
+    width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  label {
+    display: block;
+    margin-top: 10px;
+  }
+  input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  .buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .buttons p a{
+              color: black;}
+
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .btn-cancel {
+    background-color: gray;
+    color: #fff;
+  }
+  .btn-submit {
+    background-color: red;
+    color: #fff;
+  }
+  
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* высота окна */
+}

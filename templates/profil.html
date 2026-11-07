@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+{% endblock %}	
+{% block profil %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тонировка автомобилей</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/профиль.css')}}">
+</head>
+<div class="page-wrapper">
+    <div class="container">
+        <!-- Блок входа -->
+        {% if "user_id" not in session %}
+        <div class="form-box" id="login-form">
+            <h2>ВХОД</h2>
+            <form action="{{url_for('profil')}}" method="post">
+                <label for="login-login">Email *</label>
+                <input type="text" id="login-login" name="email" placeholder="Email" required />
+
+                <label for="login-password">Пароль *</label>
+                <input type="password" id="login-password" name="password" placeholder="Пароль" required />
+
+                <div class="buttons">
+                    {% for cat, msg in get_flashed_messages(True) %}
+                    <div class="flash {{cat}}">{{msg}}</div>
+                    {% endfor %}
+                    <p><a href="{{url_for('registr')}}">Регистрация</a></p>
+                    <button type="submit" class="btn-submit">ВОЙТИ</button>
+                </div>
+            </form>
+        </div>
+        {% else %}
+            {% include "profiluserpro.html" %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

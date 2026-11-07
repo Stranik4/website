@@ -1,0 +1,72 @@
+.flash.error {color: red;}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* чтобы занимала всю высоту окна */
+    margin: 0;     /* убираем возможные отступы */
+}
+/* Форма остается такой же, как и раньше */
+.form-box {
+    background-color: #fff;
+    padding: 20px;
+    width: 350px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+/* Заголовок формы */
+h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Метки */
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Поля ввода */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+/* Кнопки контейнера */
+.buttons {
+    margin-top: 20px;
+    display: flex;
+}
+
+.buttons button {width: 100%;}
+
+/* Стиль кнопки отмены */
+.btn-cancel {
+    background-color: gray;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+}
+
+/* Стиль кнопки регистрации */
+.btn-submit {
+    background-color: red;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+}

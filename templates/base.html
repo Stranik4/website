@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRAK</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/новый 1.css')}}">
+</head>
+<body>
+    <!-- Заголовок страницы -->
+    <header>
+         <!-- Логотип и название сайта -->
+        <div class="logo">
+            <img src="{{ url_for('static', filename='img/mrak.jpg')}}" alt="Логотип"> 
+			<span class="logo-text">MRAK</span>
+        </div>
+       
+        
+        <!-- Навигация -->
+        <div class="head">
+			<a id="link-profile" href="{{ url_for('index')}}">Главная</a>
+            <a id="link-profile" href="{{ url_for('profil')}}">Профиль</a>
+        </div>
+    </header>
+
+    <div class="user-actions">
+        <div><button id="button-close">&#x2715</button></div>
+        <div>
+            <a href="{{ url_for('profil')}}">ВОЙТИ</a>
+            <a href="{{ url_for('registr')}}">ЗАРЕГИСТРИРОВАТЬСЯ</a>
+        </div>
+    </div>
+    {%block content%}
+ <!-- Основной контент страницы -->
+        
+    {%endblock %}	
+    {%block service_detail%} 
+    {%endblock%} 
+
+    {%block profil%}
+    {%endblock %}	
+
+    {%block login%}
+    {%endblock %}
+
+    
+      <!-- подвал сайта -->
+    <footer>
+        <div class="footer-container">
+            <div class="logo_2">
+                <img src="{{ url_for('static', filename='img/mrak.jpg')}}" alt="Логотип" >
+                <span class="logo-text">MRAK</span> 
+                <span>&copy; 2026 Все права защищены</span>
+                <span>Наши контакты: +7(904)094-80-02</span>
+                <span>Адрес: Губкин, Мичурина 59</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
